@@ -11,6 +11,7 @@ class CustomUser:
 class CustomJWTAuthentication(JWTAuthentication):
     def authenticate(self, request):
         header = self.get_header(request)
+        print(f"werfano {header}")
         if header is None:
             return None
 
@@ -22,8 +23,8 @@ class CustomJWTAuthentication(JWTAuthentication):
 
         try:
             user_id = validated_token['user_id']
-            print(f"nino {user_id}")
             user = CustomUser(user_id)
+            print(f"nino {user}")
             return (user, validated_token)
         except KeyError:
             raise AuthenticationFailed('Invalid token', code='invalid_token')

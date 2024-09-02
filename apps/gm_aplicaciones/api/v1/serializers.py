@@ -10,7 +10,7 @@ class AplicacionSerializer(serializers.ModelSerializer):
         read_only_fields = ['id','creator_user', 'created']
 
     def create(self, validated_data):
-        print(f"ttt {self.context['request']}")
+        # print(f"ttt {self.context['request']}")
         user = self.context['request'].user
         # Asegúrate de que user.id es un UUID, si es necesario convertirlo:
         if not isinstance(user.id, UUID):
